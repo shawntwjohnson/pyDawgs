@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NFL Live Scores</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>NFL Live Scores</h1>
+    {% for game in nfl_live_scores %}
+    <table class="nfl-table">
+        <tr>
+            <th>Home Team</th>
+            <th></th> <!-- For Home Team Logo -->
+            <th>Away Team</th>
+            <th></th> <!-- For Away Team Logo -->
+            <th>Home Score</th>
+            <th>Away Score</th>
+            <th>Progress</th>
+        </tr>
+        <tr>
+            <td>{{ game['strHomeTeam'] }}</td>
+            <td><img src="{{ game['strHomeTeamBadge'] }}" alt="Home Team Logo" class="nfl-logo"></td>
+            <td>{{ game['strAwayTeam'] }}</td>
+            <td><img src="{{ game['strAwayTeamBadge'] }}" alt="Away Team Logo" class="nfl-logo"></td>
+            <td>{{ game['intHomeScore'] }}</td>
+            <td>{{ game['intAwayScore'] }}</td>
+            <td>{{ game['strProgress'] }}</td>
+        </tr>
+    </table>
+    {% endfor %}
+</body>
+</html>

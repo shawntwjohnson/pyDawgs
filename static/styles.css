@@ -20,3 +20,50 @@ th {
     background-color: #f2f2f2; /* Light grey background for visibility */
     height: 20px; /* Height to create space */
 }
+
+/* NFL Live Scores Table Styles */
+.nfl-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.nfl-table, .nfl-table th, .nfl-table td {
+    border: 1px solid #333; /* Darker border for distinction */
+}
+
+.nfl-table th, .nfl-table td {
+    padding: 8px;
+    text-align: center; /* Center align for better readability */
+}
+
+.nfl-table th {
+    background-color: #e6e6e6; /* Slightly darker header for contrast */
+}
+
+/* NFL Team Logo Styles */
+.nfl-logo {
+    width: 40px; /* Smaller size for logos */
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* NFL Table Row Styling */
+.nfl-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.nfl-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design for NFL Table */
+@media screen and (max-width: 600px) {
+    .nfl-table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
+}

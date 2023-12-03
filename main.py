@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from datetime import datetime
 from services.game_id_service import get_todays_game_ids, save_game_ids_to_json, load_game_ids_from_json
 from services.game_data_service import get_all_games_details, save_game_details_to_json
+from services.nfl_data_services import get_nfl_live_scores
 
 app = Flask(__name__)
 
@@ -26,6 +27,14 @@ def index():
     save_game_details_to_json(game_details, folder_name_game_data, json_filename_game_data)
 
     return render_template('index.html', game_details=game_details)
+
+
+@app.route('/nfl')
+def nfl_live_scores():
+    nfl_data = get_nfl_live_scores()
+    return render_template('nfl_live_scores.html', nfl_live_scores=nfl_data)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
