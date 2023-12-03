@@ -1,0 +1,22 @@
+/* styles.css */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+/* styles.css */
+.team-separator td {
+    border-top: 2px solid #000; /* Thick top border for separation */
+    border-bottom: none; /* No bottom border */
+    background-color: #f2f2f2; /* Light grey background for visibility */
+    height: 20px; /* Height to create space */
+}

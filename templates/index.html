@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+   <!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PyDawgs NBA App</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Welcome to PyDawgs NBA App</h1>
+{% for game_id, details in game_details.items() %}
+    <h2>Game ID: {{ game_id }}</h2>
+    <table>
+        <tr>
+            <th>Player Name</th>
+            <th>Team</th>
+            <th>Position</th>
+            <th>Minutes</th>
+            <th>FGM</th>
+            <th>FGA</th>
+            <th>Points</th>
+            <th>Rebounds</th>
+            <th>Assists</th>
+            <!-- ... other headers ... -->
+        </tr>
+        {% set previous_team = '' %}
+        {% for player in details['PlayerStats'] %}
+            {% if previous_team and player['TEAM_ABBREVIATION'] != previous_team %}
+                <!-- Separator row -->
+                <tr class="team-separator">
+                    <td colspan="9"></td> <!-- Update the colspan to match the number of columns -->
+                </tr>
+            {% endif %}
+            <tr>
+                <td>{{ player['PLAYER_NAME'] }}</td>
+                <td>{{ player['TEAM_ABBREVIATION'] }}</td>
+                <td>{{ player['START_POSITION'] }}</td>
+                <td>{{ player['MIN'] }}</td>
+                <td>{{ player['FGM'] }}</td>
+                <td>{{ player['FGA'] }}</td>
+                <td>{{ player['PTS'] }}</td>
+                <td>{{ player['REB'] }}</td>
+                <td>{{ player['AST'] }}</td>
+                <!-- ... other player stats ... -->
+            </tr>
+            {% set previous_team = player['TEAM_ABBREVIATION'] %}
+        {% endfor %}
+    </table>
+{% endfor %}
+</body>
+</html>
